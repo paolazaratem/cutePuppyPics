@@ -1,2 +1,2 @@
 # cutePuppyPics
-ionic app basic
+ionic app
