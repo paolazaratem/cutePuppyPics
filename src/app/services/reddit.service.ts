@@ -1,0 +1,20 @@
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
+@Injectable()
+export class RedditService {
+  http: any;
+  baseUrl: String;
+
+  constructor( http: Http) {
+    console.log('Hello RedditService Provider');
+    this.http = http;
+    this.baseUrl = 'https://www.reddit.com/r';
+  }
+
+  getPost(category, limit){
+    return this.http.get(this.baseUrl + '/')
+  }
+
+}
