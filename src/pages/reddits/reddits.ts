@@ -7,18 +7,23 @@ import { RedditService } from '../../app/services/reddit.service';
   templateUrl: 'reddits.html'
 })
 export class RedditsPage {
+  items: any;
 
-  constructor(public navCtrl: NavController, private RedditService: RedditService) {
+  constructor(public navCtrl: NavController, private redditService: RedditService) {
     console.log('qrqrqrrqrqrqr');
-    this.getPost('sports', 5);
+    //this.getPost('sports', 5);
   }
 
-  ngOninit(){
-    console.log('sdsdsdsd');
-    this.getPost('sports', 5);
+  ngOnInit(){
+    console.log('ngOnInit yuuyuyuy');
+    this.getPost('sports', 10);
   }
 
-  getPost( category, limit){
-    this.RedditService.getPost(category, limit).suscribe;
+  getPost( category, limit ){
+    this.redditService.getPost(category, limit).subscribe(response => {
+      console.log('paola');
+      console.log(response);
+      this.items = response.data.children;
+    });
   }
 }

@@ -14,7 +14,8 @@ export class RedditService {
   }
 
   getPost(category, limit){
-    return this.http.get(this.baseUrl + '/')
+    return this.http.get( this.baseUrl + '/' + category + '/top.json?limit=' + limit)
+      .map( res => res.json());
   }
 
 }
