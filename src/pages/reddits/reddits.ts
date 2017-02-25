@@ -9,13 +9,29 @@ import { DetailsPage } from '../details/details';
 })
 export class RedditsPage {
   items: any;
+  category: any;
+  limit: any;
 
   constructor(public navCtrl: NavController, private redditService: RedditService) {
+    this.getDefault();
   }
 
   ngOnInit(){
-    console.log('ngOnInit yuuyuyuy');
-    this.getPost('sports', 10);
+    console.log('ngOnInit');
+    this.getPost(this.category, this.limit);
+  }
+
+  getDefault(){
+    if(localStorage.getItem('category') != null){
+      this.category = localStorage.getItem('category');
+    }else{
+      this.category = 'sports';
+    }
+    if(localStorage.getItem('limit') != null){
+      this.limit = localStorage.getItem('limit');
+    }else{
+      this.limit = 10;
+    }
   }
 
   getPost( category, limit ){
@@ -31,5 +47,10 @@ export class RedditsPage {
     this.navCtrl.push( DetailsPage, {
       item:item
     });
+  }
+
+  changeCategory() {
+    console.log('changeCategory');
+    this.getPost(this.category, this.limit);
   }
 }

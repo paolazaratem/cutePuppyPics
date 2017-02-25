@@ -9,15 +9,28 @@
 <ion-content padding>
 <h1> is Reddits <3
 HOY ES EL DIA PARA....</h1>
-
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Category</ion-label>
+      <ion-select (ionChange)="changeCategory()" [(ngModel)]="category" name="category">
+        <ion-option value="sports" selected="true">Sports</ion-option>
+        <ion-option value="news">News</ion-option>
+        <ion-option value="food">Food</ion-option>
+        <ion-option value="music">Music</ion-option>
+        <ion-option value="funny">Funny</ion-option>
+        <ion-option value="gaming">gaming</ion-option>
+        <ion-option value="art">Art</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
   <ion-list>
     <ion-item *ngFor="let item of items">
-      <ion-thumbnail *ngIf= "item.data.thumbnail" item-left>
+      <ion-thumbnail *ngIf="item.data.thumbnail!=='self' && item.data.thumbnail!=='default' && item.data.thumbnail!=='nsfw' && item.data.thumbnail" item-left>
         <img src= "{{item.data.thumbnail}}">
       </ion-thumbnail>  
       <h2>{{item.data.title}}</h2>
       <p>
-        <ion-icon name="thumbs-up"> {{item.data.score}}</ion-icon>
+        <ion-icon name="thumbs-up"> {{item.data.score}}</ion-icon>&nbsp;
         <ion-icon name="chatboxes">{{item.data.num_comments}}</ion-icon>
       </p>
       <button ion-button clear item-right (click)="viewItem(item.data)">View</button>
