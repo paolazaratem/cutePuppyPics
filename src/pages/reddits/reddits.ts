@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RedditService } from '../../app/services/reddit.service';
+import { DetailsPage } from '../details/details';
 
 @Component({
   selector: 'page-reddits',
@@ -10,8 +11,6 @@ export class RedditsPage {
   items: any;
 
   constructor(public navCtrl: NavController, private redditService: RedditService) {
-    console.log('qrqrqrrqrqrqr');
-    //this.getPost('sports', 5);
   }
 
   ngOnInit(){
@@ -24,6 +23,13 @@ export class RedditsPage {
       console.log('paola');
       console.log(response);
       this.items = response.data.children;
+    });
+  }
+
+  viewItem(item){
+    //Let's navigate from RedditsPage to DetailsPage
+    this.navCtrl.push( DetailsPage, {
+      item:item
     });
   }
 }
