@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RedditService } from '../../app/services/reddit.service';
-import { DetailsPage } from '../details/details';
 import { RedditsPage } from '../reddits/reddits';
 
 @Component({
